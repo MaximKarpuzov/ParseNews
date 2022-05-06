@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Главная страница'"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 10px;
+            padding-left: 16px;
+            padding-right: 16px;
+            background-color: #CCCCCC;
+        }
+        .newsTitle{ text-align: center; padding-top: 16px }
+        .news{padding-top: 7px; border-style: groove; padding: 5px; }
+        .text{font: normal 20px times new roman;}
+
+        h1{ background-color: #990000; height: 70px; }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <div class="newsTitle">
+            <p th:text="Новости" />
+        </div>
+    </h1>
+    <div class="container">
+        <div class="news" th:each="el: ${title}">
+            <p th:text="${el.Time}" />
+            <p class="text" th:text="${el.Title}" />
+            <a th:href="${el.Url}" > Ссылка на новость </a>
+        </div>
+    </div>
+</body>
+</html>
