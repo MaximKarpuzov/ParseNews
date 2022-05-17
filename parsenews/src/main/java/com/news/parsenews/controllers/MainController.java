@@ -15,13 +15,9 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Model model) throws IOException {
-
         List<Article> artlist = new ArrayList<>();
         List<Article> list = Method.artList(artlist);
-        //Article art = new Article("q","q", "e");
-
         model.addAttribute("title", list);
         return "greeting";
     }
-
 }

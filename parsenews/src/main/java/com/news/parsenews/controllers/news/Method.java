@@ -8,7 +8,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Method {
@@ -20,6 +19,7 @@ public class Method {
     }
 
     public static List<Article> artList(List<Article> list) throws IOException{
+
         Document page = getPage();
 
         Element tableAll = page.select("section[class=news-listing__day-group]").first();
@@ -31,19 +31,10 @@ public class Method {
             Element aElement = name.child(0);
             String href = aElement.attr("href");
             String time = name.select("span[class=news-listing__item-time]").text();
-            articleList.add(new Article(time,title,href));
+
+            list.add(new Article(time,title,href));
         }
 
-        Iterator<Article> iterator = articleList.iterator();//получение итератора для списка
-
-        while (iterator.hasNext())      //проверка, есть ли ещё элементы
-        {
-            //получение текущего элемента и переход на следующий
-            Article text = iterator.next();
-
-            System.out.println(text);
-        }
-        list = articleList;
         return list;
     }
 }
